@@ -14,7 +14,7 @@ class InstructorsController < ApplicationController
     end
 
     def create
-        instructor = Instructor.create(instructor_params)
+        instructor = Instructor.create!(instructor_params)
         render json: instructor, status: :created
     end
 
@@ -27,7 +27,7 @@ class InstructorsController < ApplicationController
     def destroy
         instructor = Instructor.find_by(id: params[:id])
         instructor.destroy
-        head :no_content
+        render json: {}, status: :ok
        end
 
     private
